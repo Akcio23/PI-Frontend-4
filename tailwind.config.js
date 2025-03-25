@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        blueLight: '#0079C2',
+        blueBlack: '#004983'
       },
     },
   },
