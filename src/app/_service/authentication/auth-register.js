@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 ;('configurar variavel de ambiente')
 
 export const authregister = async (
