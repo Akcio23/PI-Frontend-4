@@ -1,10 +1,14 @@
 import axios from 'axios'
-;('configurar variavel de ambiente')
+import dotenv from 'dotenv'
+
+dotenv.config({ path: '.env' })
+
+const url = process.env.NEXT_PUBLIC_BACKEND_URL
 
 export const authLogin = async (email, password) => {
   try {
     const response = await axios.post(
-      'http://localhost:9000/login/signin',
+      `${url}/login/signin`,
       {
         email,
         password,

@@ -1,5 +1,5 @@
 'use client'
-import React, { use } from 'react'
+import React from 'react'
 import { ButtonRegisterSubmit } from './Buttons.jsx'
 import { useState } from 'react'
 import { authregister } from '../_service/authentication/auth-register.js'

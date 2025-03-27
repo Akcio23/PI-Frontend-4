@@ -1,6 +1,8 @@
 import axios from 'axios'
 ;('configurar variavel de ambiente')
 
+const url = process.env.NEXT_PUBLIC_BACKEND_URL
+
 export const authregister = async (
   user,
   email,
@@ -9,7 +11,7 @@ export const authregister = async (
 ) => {
   try {
     const response = await axios.post(
-      'http://localhost:9000/login/signup',
+      `${url}/login/signup`,
       {
         user,
         email,

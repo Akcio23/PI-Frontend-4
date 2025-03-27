@@ -2,6 +2,8 @@ import {
   ButtonLoginRedirect,
   ButtonRegisterRedirect,
 } from './_components/Buttons.jsx'
+import dotenv from 'dotenv'
+dotenv.config({ path: '.env ' })
 
 export default function Home() {
   return (
