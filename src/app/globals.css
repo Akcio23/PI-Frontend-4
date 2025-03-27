@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-    @apply bg-[url('/sky.svg')] bg-cover bg-center min-h-screen;
+  @apply bg-[url('/sky.svg')] bg-cover bg-center min-h-screen;
 }
