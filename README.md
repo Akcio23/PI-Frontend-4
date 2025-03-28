@@ -23,14 +23,14 @@ Este é o frontend do projeto interdisciplinar (PI) desenvolvido no 4º semestre
 ## 📁 Estrutura do Projeto
 ``` plaintext
 ├── _components/            # Componentes reutilizáveis da interface
-├── _serializer/            # Serialização de dados (provavelmente para manipular ou validar dados)
+├── _serializer/            # Serialização de dados  
 ├── _service/authentication # Serviços de autenticação
 ├── auth/                   # Lógica relacionada à autenticação (páginas, handlers etc.)
 ├── fonts/                  # Fontes personalizadas utilizadas no projeto
 ├── home/                   # Páginas e lógica da home (usuário logado)
 ├── globals.css             # Estilos globais do projeto
 ├── layout.js               # Layout base da aplicação
-└── page.js                 # Página inicial (landing ou login)
+└── page.js                 # Página inicial  
 ```
 ---
 
