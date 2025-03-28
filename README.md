@@ -46,7 +46,7 @@ Este é o frontend do projeto interdisciplinar (PI) desenvolvido no 4º semestre
   cd pi-frontend  
   npm install
 ```
-** Rodando o Projeto  
+**Rodando o Projeto**  
 ```javascript
   npm run dev
 ```  
