@@ -42,7 +42,7 @@ Este é o frontend do projeto interdisciplinar (PI) desenvolvido no 4º semestre
 
 **Instalação**
 ```bash
-  git clone https://github.com/seu-usuario/pi-frontend.git  
+  git clone https://github.com/akcio23/pi-frontend.git  
   cd pi-frontend  
   npm install
 ```
