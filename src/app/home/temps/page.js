@@ -1,9 +1,8 @@
 'use client'
 import React from 'react'
-import serializeruser from '../_serializer/serializeruser'
-import { ButtonHomeRedirect } from '../_components/Buttons'
-import DefaultAllpages from '../_components/DefaultAllpages'
-import Navbar from '../_components/Navbar'
+import serializeruser from '../../_serializer/serializeruser'
+import { ButtonHomeRedirect } from '../../_components/Buttons'
+import DefaultAllpages from '../../_components/DefaultAllpages'
 
 const Home = () => {
   const data = JSON.parse(sessionStorage.getItem('user'))
@@ -24,9 +23,11 @@ const Home = () => {
           </div>
         </div>
       ) : (
-        <p className="text-white font-medium text-2xl">
-          Bem vindo {customer.user}
-        </p>
+        <div className="bg-[rgba(0,0,0,0.5)] h-[80%] w-[80%] rounded-md shadow-md shadow-black flex-col">
+          <p className="text-white font-extrabold text-xl mt-4 ml-4">
+            Temperatura
+          </p>
+        </div>
       )}
     </div>
   )

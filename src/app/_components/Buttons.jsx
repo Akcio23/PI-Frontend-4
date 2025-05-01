@@ -86,7 +86,7 @@ export const ButtonRegisterSubmit = () => {
   return (
     <div>
       <button
-        className="bg-blueBlack text-white font-light rounded-md py-3 px-8 shadow-md shadow-black 
+        className="bg-blueBlack mb-2 text-white font-light rounded-md py-3 px-8 shadow-md shadow-black 
                   transition-transform duration-150 active:scale-95"
         onClick={handleRedirect}
       >
