@@ -1,14 +1,32 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import serializeruser from '../_serializer/serializeruser'
 import { ButtonHomeRedirect } from '../_components/Buttons'
-import DefaultAllpages from '../_components/DefaultAllpages'
-import Navbar from '../_components/Navbar'
 
 const Home = () => {
-  const data = JSON.parse(sessionStorage.getItem('user'))
-  const customer = serializeruser(data)
-  localStorage.setItem('customer', JSON.stringify(customer))
+  const [customer, setCustomer] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    try {
+      const data = JSON.parse(sessionStorage.getItem('user'))
+      const customerSerialized = serializeruser(data)
+      setCustomer(customerSerialized)
+      localStorage.setItem('customer', JSON.stringify(customer))
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
+  if (isLoading) {
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <p className="text-white">Carregando...</p>
+      </div>
+    )
+  }
 
   return (
     <div className="h-screen flex justify-center items-center">

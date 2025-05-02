@@ -1,13 +1,32 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import serializeruser from '../../_serializer/serializeruser'
 import { ButtonHomeRedirect } from '../../_components/Buttons'
-import DefaultAllpages from '../../_components/DefaultAllpages'
+import Backgroud from '@/app/_components/Backgroud'
 
-const Home = () => {
-  const data = JSON.parse(sessionStorage.getItem('user'))
-  const customer = serializeruser(data)
-  localStorage.setItem('customer', JSON.stringify(customer))
+const Dashboard = () => {
+  const [customer, setCustomer] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    try {
+      const data = JSON.parse(sessionStorage.getItem('user'))
+      const customerSerialized = serializeruser(data)
+      setCustomer(customerSerialized)
+      localStorage.setItem('customer', JSON.stringify(customer))
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+  if (isLoading) {
+    return (
+      <Backgroud>
+        <div className="h-6 w-40 bg-gray-700 rounded animate-pulse"></div>
+      </Backgroud>
+    )
+  }
 
   return (
     <div className="h-screen flex justify-center items-center">
@@ -23,14 +42,14 @@ const Home = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-[rgba(0,0,0,0.5)] h-[80%] w-[80%] rounded-md shadow-md shadow-black flex-col">
+        <Backgroud>
           <p className="text-white font-extrabold text-xl mt-4 ml-4">
             Dashboard
           </p>
-        </div>
+        </Backgroud>
       )}
     </div>
   )
 }
 
-export default Home
+export default Dashboard
