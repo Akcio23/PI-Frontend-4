@@ -4,10 +4,21 @@ import MenuIcon from '@mui/icons-material/Menu'
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts'
 import LogoutIcon from '@mui/icons-material/Logout'
 import Link from 'next/link'
+import LoadingSpinner from './LoadingSpiner'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
   const menuRef = useRef(null)
+
+  const eventClick = () => {
+    setIsOpen(false)
+    setLoading(true)
+
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+  }
 
   const toggleNavbar = () => setIsOpen((prev) => !prev)
 
@@ -31,6 +42,7 @@ const Navbar = () => {
 
   return (
     <>
+      {loading && <LoadingSpinner />}
       <button
         onClick={toggleNavbar}
         className={`absolute top-4 left-4 z-40 text-white ${isOpen ? 'hidden' : 'flex'}`}
@@ -52,7 +64,7 @@ const Navbar = () => {
             <ul className="mt-28">
               <li
                 className="border-b-2 border-white hover:border-blue-500 transition-colors duration-300"
-                onClick={() => setIsOpen(false)}
+                onClick={eventClick}
               >
                 <Link href="/home/temps">
                   <p className="text-white text-left text-xl p-3 pl-8 cursor-pointer">
@@ -62,7 +74,7 @@ const Navbar = () => {
               </li>
               <li
                 className="border-b-2 border-white hover:border-blue-500 transition-colors duration-300"
-                onClick={() => setIsOpen(false)}
+                onClick={eventClick}
               >
                 <Link href="/home/dashboard">
                   <p className="text-white text-left text-xl p-3 pl-8 cursor-pointer">
@@ -72,7 +84,7 @@ const Navbar = () => {
               </li>
               <li
                 className="border-b-2 border-white hover:border-blue-500 transition-colors duration-300"
-                onClick={() => setIsOpen(false)}
+                onClick={eventClick}
               >
                 <Link href="/home/artig">
                   <p className="text-white text-left text-xl p-3 pl-8 cursor-pointer">
@@ -88,7 +100,7 @@ const Navbar = () => {
               <Link href="/home/settings">
                 <p
                   className="text-white text-md cursor-pointer"
-                  onClick={() => setIsOpen(false)}
+                  onClick={eventClick}
                 >
                   <ManageAccountsIcon />
                 </p>
