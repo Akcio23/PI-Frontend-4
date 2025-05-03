@@ -2,9 +2,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import MenuIcon from '@mui/icons-material/Menu'
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts'
-import LogoutIcon from '@mui/icons-material/Logout'
 import Link from 'next/link'
 import LoadingSpinner from './LoadingSpiner'
+import ModalLogout from './ModalLogout'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -94,12 +94,12 @@ const Navbar = () => {
               </li>
             </ul>
             <div className="absolute bottom-6 left-0 w-full flex flex-row gap-5 justify-around items-center">
-              <p className="text-white text-md cursor-pointer">
-                <LogoutIcon />
+              <p className="text-white text-md cursor-pointer ">
+                <ModalLogout />
               </p>
               <Link href="/home/settings">
                 <p
-                  className="text-white text-md cursor-pointer"
+                  className="text-white text-md cursor-pointer hover:text-blue-500 transition-colors duration-300"
                   onClick={eventClick}
                 >
                   <ManageAccountsIcon />
