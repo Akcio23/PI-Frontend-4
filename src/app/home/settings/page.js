@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from 'react'
 import serializeruser from '../../_serializer/serializeruser'
 import { ButtonHomeRedirect } from '../../_components/Buttons'
-import DefaultAllpages from '../../_components/DefaultAllpages'
+import CreateIcon from '@mui/icons-material/Create'
+import Image from 'next/image'
 
-const Home = () => {
+const Settings = () => {
   const [customer, setCustomer] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -42,10 +43,22 @@ const Home = () => {
           </div>
         </div>
       ) : (
-        <DefaultAllpages customer={customer} />
+        <div className="flex flex-col">
+          <Image
+            src="/profile.svg"
+            alt="user image"
+            width={200}
+            height={100}
+            className="text-red-500 fill-current"
+          />
+          <p className="text-white text-xl">Nome: {customer.user}</p>
+          <p className="text-white text-xl">
+            Cidade: Franca-SP <CreateIcon />
+          </p>
+        </div>
       )}
     </div>
   )
 }
 
-export default Home
+export default Settings
