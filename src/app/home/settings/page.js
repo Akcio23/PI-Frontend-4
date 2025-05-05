@@ -53,7 +53,7 @@ const Settings = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col">
+        <div className="flex flex-col justify-center items-center">
           <Image
             src="/profile.svg"
             alt="user image"
@@ -61,10 +61,12 @@ const Settings = () => {
             height={100}
             className="text-red-500 fill-current"
           />
-          <p className="text-white text-xl">Nome: {customer.user}</p>
-          <p className="text-white text-xl flex justify-center items-center">
-            Cidade: {city || '...'} <ModalCity customer={customer} />
-          </p>
+          <div className="flex flex-col gap-1 justify-start items-start">
+            <p className="text-white text-xl">Nome: {customer.user}</p>
+            <p className="text-white text-xl flex justify-center items-center">
+              Cidade: {city || 'N/D'} <ModalCity customer={customer} />
+            </p>
+          </div>
         </div>
       )}
     </div>

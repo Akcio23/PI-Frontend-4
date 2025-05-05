@@ -6,14 +6,15 @@ import { addCity } from '../_service/user/postCity'
 
 const ModalCity = ({ customer }) => {
   const [show, setShow] = useState(false)
-  const [showSuccess, setShowSuccess] = useState(false)
   const [city, setCity] = useState()
+  const [loading, setLoading] = useState(false)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
   const handleAdd = () => {
     addCity(_id, city, token)
+    setLoading(true)
     handleClose()
     window.location.reload()
   }
@@ -21,6 +22,7 @@ const ModalCity = ({ customer }) => {
 
   return (
     <>
+      {loading && <LoadingSpinner />}
       <button
         onClick={handleShow}
         className=" text-white px-3 py-2 rounded flex items-center gap-2 hover:text-blue-500 transition-colors duration-300"
@@ -64,8 +66,6 @@ const ModalCity = ({ customer }) => {
           </div>
         </div>
       )}
-
-      {showSuccess && <LoadingSpinner />}
     </>
   )
 }
