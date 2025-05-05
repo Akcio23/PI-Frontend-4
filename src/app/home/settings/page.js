@@ -2,12 +2,14 @@
 import React, { useState, useEffect } from 'react'
 import serializeruser from '../../_serializer/serializeruser'
 import { ButtonHomeRedirect } from '../../_components/Buttons'
-import CreateIcon from '@mui/icons-material/Create'
 import Image from 'next/image'
+import ModalCity from '@/app/_components/ModalCity'
+import { getUser } from '@/app/_service/user/getUser'
 
 const Settings = () => {
   const [customer, setCustomer] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [city, setCity] = useState(false)
 
   useEffect(() => {
     try {
@@ -15,6 +17,14 @@ const Settings = () => {
       const customerSerialized = serializeruser(data)
       setCustomer(customerSerialized)
       localStorage.setItem('customer', JSON.stringify(customer))
+
+      setTimeout(async () => {
+        const profile = await getUser(
+          customerSerialized.email,
+          customerSerialized.token,
+        )
+        setCity(profile.response.data.user.city)
+      }, 500)
     } catch (err) {
       console.log(err)
     } finally {
@@ -52,8 +62,8 @@ const Settings = () => {
             className="text-red-500 fill-current"
           />
           <p className="text-white text-xl">Nome: {customer.user}</p>
-          <p className="text-white text-xl">
-            Cidade: Franca-SP <CreateIcon />
+          <p className="text-white text-xl flex justify-center items-center">
+            Cidade: {city || '...'} <ModalCity customer={customer} />
           </p>
         </div>
       )}
