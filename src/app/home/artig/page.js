@@ -22,9 +22,17 @@ const Artig = () => {
   }, [])
   if (isLoading) {
     return (
-      <Backgroud>
-        <div className="h-6 w-40 bg-gray-700 rounded animate-pulse"></div>
-      </Backgroud>
+      <div className="h-screen flex justify-center items-center">
+        <Backgroud>
+          <div className="flex items-center justify-center h-screen">
+            <div className="h-80 w-80  rounded animate-pulse flex flex-col gap-7 p-2">
+              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
+              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
+              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
+            </div>
+          </div>
+        </Backgroud>
+      </div>
     )
   }
 

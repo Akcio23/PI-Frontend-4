@@ -10,6 +10,7 @@ import serializedApi from '@/app/_serializer/serializarApi'
 const Temps = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [customer, setCustomer] = useState()
+  const [weather, setWeather] = useState()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,11 +26,9 @@ const Temps = () => {
         const city = profileResponse.response.data.user.city
         const cityWeather = await getCityWeather(city)
 
-        const test = serializedApi(cityWeather.response.data)
+        const weatherParse = serializedApi(cityWeather.response.data)
 
-        console.log(test, '------------------>')
-
-        console.log(cityWeather)
+        setWeather(weatherParse)
       } catch (err) {
         console.log(err)
       } finally {
@@ -40,9 +39,17 @@ const Temps = () => {
   }, [])
   if (isLoading) {
     return (
-      <Backgroud>
-        <div className="h-6 w-40 bg-gray-700 rounded animate-pulse"></div>
-      </Backgroud>
+      <div className="h-screen flex justify-center items-center">
+        <Backgroud>
+          <div className="flex items-center justify-center h-screen">
+            <div className="h-80 w-80  rounded animate-pulse flex flex-col gap-7 p-2">
+              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
+              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
+              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
+            </div>
+          </div>
+        </Backgroud>
+      </div>
     )
   }
 
@@ -62,19 +69,22 @@ const Temps = () => {
       ) : (
         <Backgroud>
           <div className="text-white font-light flex flex-col justify-center items-center mt-5 gap-1">
-            <p className="text-white text-xl">DOM</p>
-            <p>Franca-SP</p>
-            <p className="text-5xl pl-4">22º</p>
-            <p>Parcialmente nublado</p>
+            <p className="text-white text-xl">{weather.forecast[0].weekday}</p>
+            <p>{weather.city}</p>
+            <p className="text-5xl pl-4 ">{weather.temp}º</p>
+            <p>{weather.desc}</p>
           </div>
           <div className="flex justify-center mt-3">
             <div className="text-white font-light flex flex-col items-start text-left">
-              <p>Umidade do ar: 41%</p>
-              <p>Max.: 25º, Min.: 15º</p>
-              <p>Prob. de chuva: 20%</p>
+              <p>Umidade do ar: {weather.humidity}%</p>
+              <p>
+                Max.: {weather.forecast[0].max}º, Min.:{' '}
+                {weather.forecast[0].min}º
+              </p>
+              <p>Prob. de chuva: {weather.rain} %</p>
             </div>
           </div>
-          <div className="flex justify-center items-center mt-2">
+          <div className="flex justify-center items-center mt-5">
             <table border="1" className=" text-white">
               <thead>
                 <tr>
@@ -87,65 +97,56 @@ const Temps = () => {
                 <tr>
                   <td>
                     <div className="flex items-center gap-2">
-                      <span>Segunda</span>
+                      <span>{weather.forecast[1].weekday}</span>
                     </div>
                   </td>
-                  <td className="text-right">25°</td>
-                  <td className="text-right">10°</td>
+                  <td className="text-right">{weather.forecast[1].max}°</td>
+                  <td className="text-right">{weather.forecast[1].min}°</td>
                 </tr>
                 <tr>
                   <td>
                     <div className="flex items-center gap-2">
-                      <span>Terça</span>
+                      <span>{weather.forecast[2].weekday}</span>
                     </div>
                   </td>
-                  <td className="text-right">25°</td>
-                  <td className="text-right">10°</td>
+                  <td className="text-right">{weather.forecast[2].max}°</td>
+                  <td className="text-right">{weather.forecast[2].min}°</td>
                 </tr>
                 <tr>
                   <td>
                     <div className="flex items-center gap-2">
-                      <span>Quarta</span>
+                      <span>{weather.forecast[3].weekday}</span>
                     </div>
                   </td>
-                  <td className="text-right">25°</td>
-                  <td className="text-right">10°</td>
+                  <td className="text-right">{weather.forecast[3].max}°</td>
+                  <td className="text-right">{weather.forecast[3].min}°</td>
                 </tr>
                 <tr>
                   <td>
                     <div className="flex items-center gap-2">
-                      <span>Quinta</span>
+                      <span>{weather.forecast[4].weekday}</span>
                     </div>
                   </td>
-                  <td className="text-right">25°</td>
-                  <td className="text-right">10°</td>
+                  <td className="text-right">{weather.forecast[4].max}°</td>
+                  <td className="text-right">{weather.forecast[4].min}°</td>
                 </tr>
                 <tr>
                   <td>
                     <div className="flex items-center gap-2">
-                      <span>Sexta</span>
+                      <span>{weather.forecast[5].weekday}</span>
                     </div>
                   </td>
-                  <td className="text-right">25°</td>
-                  <td className="text-right">10°</td>
+                  <td className="text-right">{weather.forecast[5].max}°</td>
+                  <td className="text-right">{weather.forecast[5].min}°</td>
                 </tr>
                 <tr>
                   <td>
                     <div className="flex items-center gap-2">
-                      <span>Sábado</span>
+                      <span>{weather.forecast[6].weekday}</span>
                     </div>
                   </td>
-                  <td className="text-right">25°</td>
-                  <td className="text-right">10°</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="flex items-center gap-2">
-                      <span>Domingo</span>
-                    </div>
-                  </td>
-                  <td className="text-right">25°</td>
-                  <td className="text-right">10°</td>
+                  <td className="text-right">{weather.forecast[6].max}°</td>
+                  <td className="text-right">{weather.forecast[6].min}°</td>
                 </tr>
               </tbody>
             </table>

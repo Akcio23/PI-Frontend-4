@@ -3,8 +3,17 @@ const serializedApi = (object) => {
   const city = object.cityWeather.results.city
   const rain = object.cityWeather.results.rain
   const data = object.cityWeather.results.forecast
+  const temp = object.cityWeather.results.temp
+  const humidity = object.cityWeather.results.humidity
 
-  const serialized = { temp: description, city, rain, forecast: [...data] }
+  const serialized = {
+    desc: description,
+    city,
+    rain,
+    temp,
+    humidity,
+    forecast: [...data],
+  }
 
   return serialized
 }
