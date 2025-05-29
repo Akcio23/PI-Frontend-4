@@ -23,7 +23,7 @@ const Settings = () => {
           customerSerialized.email,
           customerSerialized.token,
         )
-        setCity(profile.response.data.user.city)
+        setCity(profile?.response?.data?.user?.city)
       }, 500)
     } catch (err) {
       console.log(err)

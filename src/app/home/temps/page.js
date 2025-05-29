@@ -26,7 +26,7 @@ const Temps = () => {
         const city = profileResponse.response.data.user.city
         const cityWeather = await getCityWeather(city)
 
-        const weatherParse = serializedApi(cityWeather.response.data)
+        const weatherParse = serializedApi(cityWeather?.response?.data)
 
         setWeather(weatherParse)
       } catch (err) {
@@ -69,17 +69,19 @@ const Temps = () => {
       ) : (
         <Backgroud>
           <div className="text-white font-light flex flex-col justify-center items-center mt-5 gap-1">
-            <p className="text-white text-xl">{weather.forecast[0].weekday}</p>
-            <p>{weather.city}</p>
-            <p className="text-5xl pl-4 ">{weather.temp}º</p>
-            <p>{weather.desc}</p>
+            <p className="text-white text-xl">
+              {weather?.forecast?.[0]?.weekday}
+            </p>
+            <p>{weather?.city}</p>
+            <p className="text-5xl pl-4 ">{weather?.temp}º</p>
+            <p>{weather?.desc}</p>
           </div>
           <div className="flex justify-center mt-3">
             <div className="text-white font-light flex flex-col items-start text-left">
-              <p>Umidade do ar: {weather.humidity}%</p>
+              <p>Umidade do ar: {weather?.humidity}%</p>
               <p>
-                Max.: {weather.forecast[0].max}º, Min.:{' '}
-                {weather.forecast[0].min}º
+                Max.: {weather?.forecast?.[0]?.max}º, Min.:{' '}
+                {weather?.forecast?.[0]?.min}º
               </p>
               <p>Prob. de chuva: {weather.rain} %</p>
             </div>
