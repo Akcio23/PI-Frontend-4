@@ -37,15 +37,16 @@ const Temps = () => {
     }
     fetchData()
   }, [])
+
   if (isLoading) {
     return (
-      <div className="h-screen flex justify-center items-center">
+      <div className="min-h-screen flex justify-center items-center p-4">
         <Backgroud>
-          <div className="flex items-center justify-center h-screen">
-            <div className="h-80 w-80  rounded animate-pulse flex flex-col gap-7 p-2">
-              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
-              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
-              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
+          <div className="flex items-center justify-center min-h-screen">
+            <div className="h-full w-full animate-pulse flex flex-col gap-3 p-3">
+              <div className="h-16 bg-white/10 rounded-lg"></div>
+              <div className="h-12 bg-white/10 rounded-lg"></div>
+              <div className="flex-1 bg-white/10 rounded-lg min-h-[120px]"></div>
             </div>
           </div>
         </Backgroud>
@@ -54,104 +55,99 @@ const Temps = () => {
   }
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="min-h-screen flex justify-center items-center p-4">
       {!customer?._id ? (
         <div className="bg-cover bg-center min-h-screen flex flex-col justify-center items-center">
-          <div className="flex flex-col gap-10  h-96 justify-center items-center">
-            <p className="text-white text-center font-bold">
+          <div className="flex flex-col gap-8 h-full justify-center items-center p-8">
+            <p className="text-white text-center font-semibold text-lg">
               Faça login para continuar!
             </p>
-            <div className="flex flex-col gap-5 ">
+            <div className="flex flex-col gap-5">
               <ButtonHomeRedirect />
             </div>
           </div>
         </div>
       ) : (
         <Backgroud>
-          <div className="text-white font-light flex flex-col justify-center items-center mt-5 gap-1">
-            <p className="text-white text-xl">
-              {weather?.forecast?.[0]?.weekday}
-            </p>
-            <p>{weather?.city}</p>
-            <p className="text-5xl pl-4 ">{weather?.temp}º</p>
-            <p>{weather?.desc}</p>
-          </div>
-          <div className="flex justify-center mt-3">
-            <div className="text-white font-light flex flex-col items-start text-left">
-              <p>Umidade do ar: {weather?.humidity}%</p>
-              <p>
-                Max.: {weather?.forecast?.[0]?.max}º, Min.:{' '}
-                {weather?.forecast?.[0]?.min}º
+          <div className="flex flex-col h-full w-full p-3">
+            {/* Current Weather Section */}
+            <div className="text-white text-center mb-4">
+              <p className="text-lg font-medium opacity-90 mb-1">
+                {weather?.forecast?.[0]?.weekday}
               </p>
-              <p>Prob. de chuva: {weather.rain} %</p>
+              <p className="text-xs opacity-75 font-light mb-2">
+                {weather?.city}
+              </p>
+              <div className="mb-2">
+                <p className="text-5xl font-thin tracking-tight leading-none">
+                  {weather?.temp}°
+                </p>
+              </div>
+              <p className="text-sm capitalize opacity-90">{weather?.desc}</p>
             </div>
-          </div>
-          <div className="flex justify-center items-center mt-5">
-            <table border="1" className=" text-white">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th className="text-right font-light pl-5">Max</th>
-                  <th className="text-right font-light pl-5">Min</th>
-                </tr>
-              </thead>
-              <tbody className="text-left">
-                <tr>
-                  <td>
-                    <div className="flex items-center gap-2">
-                      <span>{weather.forecast[1].weekday}</span>
+
+            {/* Weather Details - Horizontal Layout */}
+            <div className="grid grid-cols-3 gap-2 mb-4 px-1">
+              <div className="bg-white/5 rounded-lg p-2 border border-white/10 text-center">
+                <div className="text-white/70 text-xs mb-1">Umidade</div>
+                <div className="text-white font-medium text-sm">
+                  {weather?.humidity}%
+                </div>
+              </div>
+
+              <div className="bg-white/5 rounded-lg p-2 border border-white/10 text-center">
+                <div className="text-white/70 text-xs mb-1">Max/Min</div>
+                <div className="text-white font-medium text-xs">
+                  {weather?.forecast?.[0]?.max}°/{weather?.forecast?.[0]?.min}°
+                </div>
+              </div>
+
+              <div className="bg-white/5 rounded-lg p-2 border border-white/10 text-center">
+                <div className="text-white/70 text-xs mb-1">Chuva</div>
+                <div className="text-white font-medium text-sm">
+                  {weather?.rain}%
+                </div>
+              </div>
+            </div>
+
+            {/* 7-Day Forecast - Compact */}
+            <div className="bg-white/5 rounded-lg border border-white/10 flex-1 min-h-0">
+              <h3 className="text-white font-medium p-3 pb-2 text-center text-sm">
+                Próximos dias
+              </h3>
+
+              <div className="px-3 pb-3 space-y-1">
+                {weather?.forecast?.slice(1, 7).map((day, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between py-1.5 px-2 rounded hover:bg-white/5 transition-colors duration-200"
+                  >
+                    <span className="text-white font-light text-xs w-12 truncate">
+                      {day.weekday}
+                    </span>
+
+                    <div className="flex items-center gap-2 flex-1 justify-end">
+                      <span className="text-white/60 text-xs min-w-[24px] text-right">
+                        {day.min}°
+                      </span>
+
+                      <div className="w-80 h-1 bg-white/20 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-to-r from-cyan-400 to-orange-400 rounded-full"
+                          style={{
+                            width: `${Math.max(20, Math.min(100, ((day.max - day.min) / 25) * 100))}%`,
+                          }}
+                        ></div>
+                      </div>
+
+                      <span className="text-white font-medium text-xs min-w-[24px] text-right">
+                        {day.max}°
+                      </span>
                     </div>
-                  </td>
-                  <td className="text-right">{weather.forecast[1].max}°</td>
-                  <td className="text-right">{weather.forecast[1].min}°</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="flex items-center gap-2">
-                      <span>{weather.forecast[2].weekday}</span>
-                    </div>
-                  </td>
-                  <td className="text-right">{weather.forecast[2].max}°</td>
-                  <td className="text-right">{weather.forecast[2].min}°</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="flex items-center gap-2">
-                      <span>{weather.forecast[3].weekday}</span>
-                    </div>
-                  </td>
-                  <td className="text-right">{weather.forecast[3].max}°</td>
-                  <td className="text-right">{weather.forecast[3].min}°</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="flex items-center gap-2">
-                      <span>{weather.forecast[4].weekday}</span>
-                    </div>
-                  </td>
-                  <td className="text-right">{weather.forecast[4].max}°</td>
-                  <td className="text-right">{weather.forecast[4].min}°</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="flex items-center gap-2">
-                      <span>{weather.forecast[5].weekday}</span>
-                    </div>
-                  </td>
-                  <td className="text-right">{weather.forecast[5].max}°</td>
-                  <td className="text-right">{weather.forecast[5].min}°</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="flex items-center gap-2">
-                      <span>{weather.forecast[6].weekday}</span>
-                    </div>
-                  </td>
-                  <td className="text-right">{weather.forecast[6].max}°</td>
-                  <td className="text-right">{weather.forecast[6].min}°</td>
-                </tr>
-              </tbody>
-            </table>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </Backgroud>
       )}

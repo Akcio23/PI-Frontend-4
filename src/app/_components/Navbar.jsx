@@ -88,7 +88,7 @@ const Navbar = () => {
               >
                 <Link href="/home/artig">
                   <p className="text-white text-left text-xl p-3 pl-8 cursor-pointer">
-                    Artigos
+                    News
                   </p>
                 </Link>
               </li>
