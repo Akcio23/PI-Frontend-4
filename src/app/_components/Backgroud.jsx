@@ -2,7 +2,7 @@ import React from 'react'
 
 const Backgroud = ({ children }) => {
   return (
-    <div className="bg-[rgba(0,0,0,0.5)] h-[90%] w-[80%] md:w-[80%] rounded-md shadow-md shadow-black flex-col">
+    <div className="bg-black/50 backdrop-blur-sm h-[85vh] w-[85%] max-w-7xl mx-auto rounded-lg shadow-lg shadow-black/30 flex flex-col overflow-hidden">
       {children}
     </div>
   )

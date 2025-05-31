@@ -36,15 +36,17 @@ const Artig = () => {
     fetchData()
   }, [])
 
+  // Loading state
   if (isLoading) {
     return (
-      <div className="h-screen flex justify-center items-center">
+      <div className="min-h-screen flex justify-center items-center p-4">
         <Backgroud>
-          <div className="flex items-center justify-center h-screen">
-            <div className="h-80 w-80 rounded animate-pulse flex flex-col gap-7 p-2">
-              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
-              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
-              <div className="flex-1 bg-[rgba(255,255,255,0.1)] rounded"></div>
+          <div className="flex items-center justify-center h-full min-h-[400px]">
+            <div className="w-full max-w-md rounded animate-pulse flex flex-col gap-4 p-4">
+              <div className="h-20 bg-white/10 rounded"></div>
+              <div className="h-20 bg-white/10 rounded"></div>
+              <div className="h-20 bg-white/10 rounded"></div>
+              <div className="h-16 bg-white/10 rounded"></div>
             </div>
           </div>
         </Backgroud>
@@ -52,36 +54,57 @@ const Artig = () => {
     )
   }
 
-  return (
-    <div className="h-screen flex justify-center items-center">
-      {!customer?._id ? (
-        <div className="bg-cover bg-center min-h-screen flex flex-col justify-center items-center">
-          <div className="flex flex-col gap-10 h-96 justify-center items-center">
-            <p className="text-white text-center font-bold">
+  // Not authenticated state
+  if (!customer?._id) {
+    return (
+      <div className="min-h-screen flex justify-center items-center p-4">
+        <Backgroud>
+          <div className="flex flex-col gap-8 justify-center items-center h-full min-h-[400px] p-6">
+            <p className="text-white text-center font-bold text-lg md:text-xl">
               Faça login para continuar!
             </p>
-            <div className="flex flex-col gap-5">
-              <ButtonHomeRedirect />
-            </div>
-          </div>
-        </div>
-      ) : (
-        <Backgroud>
-          <p className="text-white font-extrabold text-xl mt-4 ml-4 text-center">
-            Notícias
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-            {news?.map((noticia, index) => (
-              <CardNoticia
-                key={index}
-                titulo={noticia.titulo}
-                link={noticia.link}
-                imagem={noticia.imagem}
-              />
-            ))}
+            <ButtonHomeRedirect />
           </div>
         </Backgroud>
-      )}
+      </div>
+    )
+  }
+
+  // Main content
+  return (
+    <div className="min-h-screen flex justify-center items-center p-2 sm:p-4">
+      <Backgroud>
+        <div className="flex flex-col h-full overflow-hidden">
+          {/* Header */}
+          <div className="flex-shrink-0 p-4 sm:p-6">
+            <h1 className="text-white font-extrabold text-xl sm:text-2xl md:text-3xl text-center">
+              Notícias
+            </h1>
+          </div>
+
+          {/* Content Area */}
+          <div className="flex-1 overflow-y-auto px-2 sm:px-4 pb-4">
+            {news?.length > 0 ? (
+              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                {news.map((noticia, index) => (
+                  <CardNoticia
+                    key={noticia.id || index}
+                    titulo={noticia.titulo}
+                    link={noticia.link}
+                    imagem={noticia.imagem}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="flex items-center justify-center h-full min-h-[200px]">
+                <p className="text-white/70 text-center text-lg">
+                  Nenhuma notícia disponível no momento.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </Backgroud>
     </div>
   )
 }
