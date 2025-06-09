@@ -65,7 +65,7 @@ Este é o frontend do projeto interdisciplinar (PI) desenvolvido no 4º semestre
 ---
 
 ## 📌 Observações  
-- Este projeto se conecta a um backend (API) que deve estar rodando para algumas funcionalidades funcionarem corretamente.  
+- Este projeto se conecta a um backend (API) que deve estar rodando para que o projeto funcione de forma adequada.  
 - As variáveis de ambiente devem ser definidas em um arquivo .env.local.
 
    .env.local
