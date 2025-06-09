@@ -12,24 +12,27 @@ const Settings = () => {
   const [city, setCity] = useState(false)
 
   useEffect(() => {
-    try {
-      const data = JSON.parse(sessionStorage.getItem('user'))
-      const customerSerialized = serializeruser(data)
-      setCustomer(customerSerialized)
-      localStorage.setItem('customer', JSON.stringify(customer))
+    const fetchData = async () => {
+      try {
+        const data = JSON.parse(sessionStorage.getItem('user'))
+        const customerSerialized = serializeruser(data)
+        setCustomer(customerSerialized)
+        localStorage.setItem('customer', JSON.stringify(customer))
 
-      setTimeout(async () => {
-        const profile = await getUser(
-          customerSerialized.email,
-          customerSerialized.token,
-        )
-        setCity(profile?.response?.data?.user?.city)
-      }, 500)
-    } catch (err) {
-      console.log(err)
-    } finally {
-      setIsLoading(false)
+        setTimeout(async () => {
+          const profile = await getUser(
+            customerSerialized.email,
+            customerSerialized.token,
+          )
+          setCity(profile?.response?.data?.user?.city)
+        }, 500)
+      } catch (err) {
+        console.log(err)
+      } finally {
+        setIsLoading(false)
+      }
     }
+    fetchData()
   }, [])
   if (isLoading) {
     return (

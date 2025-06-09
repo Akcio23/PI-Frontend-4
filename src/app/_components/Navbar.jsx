@@ -76,9 +76,9 @@ const Navbar = () => {
                 className="border-b-2 border-white hover:border-blue-500 transition-colors duration-300"
                 onClick={eventClick}
               >
-                <Link href="/home/dashboard">
+                <Link href="/home/live">
                   <p className="text-white text-left text-xl p-3 pl-8 cursor-pointer">
-                    Dashboard
+                    Live
                   </p>
                 </Link>
               </li>
