@@ -8,16 +8,19 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    try {
-      const data = JSON.parse(sessionStorage.getItem('user'))
-      const customerSerialized = serializeruser(data)
-      setCustomer(customerSerialized)
-      localStorage.setItem('customer', JSON.stringify(customer))
-    } catch (err) {
-      console.log(err)
-    } finally {
-      setIsLoading(false)
+    const fetchData = async () => {
+      try {
+        const data = await JSON.parse(sessionStorage.getItem('user'))
+        const customerSerialized = serializeruser(data)
+        setCustomer(customerSerialized)
+        await localStorage.setItem('customer', JSON.stringify(customer))
+      } catch (err) {
+        console.log(err)
+      } finally {
+        setIsLoading(false)
+      }
     }
+    fetchData()
   }, [])
 
   if (isLoading) {

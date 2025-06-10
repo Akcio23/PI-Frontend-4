@@ -14,10 +14,10 @@ const Settings = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = JSON.parse(sessionStorage.getItem('user'))
+        const data = await JSON.parse(sessionStorage.getItem('user'))
         const customerSerialized = serializeruser(data)
         setCustomer(customerSerialized)
-        localStorage.setItem('customer', JSON.stringify(customer))
+        await localStorage.setItem('customer', JSON.stringify(customer))
 
         setTimeout(async () => {
           const profile = await getUser(
