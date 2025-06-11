@@ -13,7 +13,7 @@ const Home = () => {
         const data = await JSON.parse(sessionStorage.getItem('user'))
         const customerSerialized = serializeruser(data)
         setCustomer(customerSerialized)
-        await localStorage.setItem('customer', JSON.stringify(customer))
+        localStorage.setItem('customer', JSON.stringify(customer))
       } catch (err) {
         console.log(err)
       } finally {

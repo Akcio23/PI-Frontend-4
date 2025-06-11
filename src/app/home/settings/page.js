@@ -1,10 +1,10 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import serializeruser from '../../_serializer/serializeruser'
 import { ButtonHomeRedirect } from '../../_components/Buttons'
 import Image from 'next/image'
 import ModalCity from '@/app/_components/ModalCity'
 import { getUser } from '@/app/_service/user/getUser'
+import authPage from '@/app/utils/authpage'
 
 const Settings = () => {
   const [customer, setCustomer] = useState(null)
@@ -14,16 +14,10 @@ const Settings = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await JSON.parse(sessionStorage.getItem('user'))
-        const customerSerialized = serializeruser(data)
-        setCustomer(customerSerialized)
-        await localStorage.setItem('customer', JSON.stringify(customer))
-
+        const storage = await authPage()
+        setCustomer(storage)
         setTimeout(async () => {
-          const profile = await getUser(
-            customerSerialized.email,
-            customerSerialized.token,
-          )
+          const profile = await getUser(storage.email, storage.token)
           setCity(profile?.response?.data?.user?.city)
         }, 500)
       } catch (err) {
