@@ -12,8 +12,8 @@ const ModalCity = ({ customer }) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  const handleAdd = () => {
-    addCity(_id, city, token)
+  const handleAdd = async () => {
+    await addCity(_id, city, token)
     setLoading(true)
     handleClose()
     window.location.reload()
