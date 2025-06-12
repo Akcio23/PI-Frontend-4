@@ -26,7 +26,7 @@ const Home = () => {
   if (isLoading) {
     return (
       <div className="h-screen flex justify-center items-center">
-        <p className="text-white">Carregando...</p>
+        <p className="text-white text-base">Carregando...</p>
       </div>
     )
   }
@@ -45,8 +45,13 @@ const Home = () => {
           </div>
         </div>
       ) : (
-        <p className="text-white font-medium text-2xl">
-          Bem vindo {customer.user}
+        <p
+          className="text-white font-light text-5xl tracking-tight leading-tight"
+          style={{
+            textShadow: '3px 3px 12px rgba(0, 0, 0, 0.85)',
+          }}
+        >
+          Bem-vindo {customer.user}
         </p>
       )}
     </div>
