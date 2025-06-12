@@ -1,6 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useState } from 'react'
+import LoadingSpinner from './LoadingSpiner'
 
 export const ButtonLoginRedirect = () => {
   const router = useRouter()
@@ -63,12 +64,15 @@ export const ButtonHomeRedirect = () => {
 }
 
 export const ButtonLoginSubmit = () => {
+  const [loading, setLoading] = useState(false)
   return (
     <div>
+      {loading && <LoadingSpinner />}
       <button
         className="bg-blueLight text-white font-light rounded-md py-3 px-8 shadow-md shadow-black 
                   transition-transform duration-150 active:scale-95"
         type="submit"
+        onClick={() => setLoading(true)}
       >
         Login
       </button>
