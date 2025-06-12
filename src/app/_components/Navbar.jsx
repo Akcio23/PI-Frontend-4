@@ -92,6 +92,16 @@ const Navbar = () => {
                   </p>
                 </Link>
               </li>
+              <li
+                className="border-b-2 border-white hover:border-blue-500 transition-colors duration-300"
+                onClick={eventClick}
+              >
+                <Link href="/home/dashboard">
+                  <p className="text-white text-left text-xl p-3 pl-8 cursor-pointer">
+                    Dashboard
+                  </p>
+                </Link>
+              </li>
             </ul>
             <div className="absolute bottom-6 left-0 w-full flex flex-row gap-5 justify-around items-center">
               <p className="text-white text-md cursor-pointer ">
