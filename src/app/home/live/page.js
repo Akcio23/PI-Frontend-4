@@ -48,8 +48,8 @@ const LoadingSkeleton = () => (
 
 const DataCard = ({ icon: Icon, label, value, color, unit }) => (
   <div className="group relative">
-    <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-xl blur-sm group-hover:blur-none transition-all duration-300"></div>
-    <div className="relative bg-white/10 backdrop-blur-md p-2 sm:p-3 md:p-4 lg:p-6 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 hover:shadow-xl hover:shadow-white/10 hover:-translate-y-1">
+    <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/5 rounded-xl blur-sm group-hover:blur-none transition-all duration-300"></div>
+    <div className="relative bg-white/5 p-2 sm:p-3 md:p-4 lg:p-6 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 hover:shadow-xl hover:shadow-white/10 hover:-translate-y-1">
       <div className="flex flex-col items-center text-center space-y-1 sm:space-y-2 md:space-y-3">
         <div
           className={`p-1.5 sm:p-2 md:p-3 rounded-full bg-gradient-to-br ${color} shadow-lg`}
@@ -181,7 +181,7 @@ const Live = () => {
           {/* Cards Grid - Área principal que cresce */}
           <div className="flex-1 overflow-y-auto px-2 sm:px-3 md:px-6">
             <div className="w-full max-w-4xl mx-auto py-1 sm:py-2 md:py-4">
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+              <div className="grid grid-cols-1 gap-2 sm:gap-3 md:gap-4 lg:gap-6 ">
                 <DataCard
                   icon={Calendar}
                   label="Data"

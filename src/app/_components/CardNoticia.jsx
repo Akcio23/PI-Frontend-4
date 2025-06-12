@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 
 const CardNoticia = ({ titulo, link, imagem }) => {
@@ -17,7 +18,7 @@ const CardNoticia = ({ titulo, link, imagem }) => {
         draggable={false}
       />
       <div className="flex flex-col justify-between flex-1">
-        <h3 className="text-white font-semibold text-lg md:text-xl line-clamp-3">
+        <h3 className="text-white font-semibold text-base md:text-base line-clamp-3">
           {titulo}
         </h3>
         <span className="mt-1 text-blue-400 hover:text-blue-500 font-medium text-sm transition">

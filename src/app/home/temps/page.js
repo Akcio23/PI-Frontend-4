@@ -72,46 +72,46 @@ const Temps = () => {
           <div className="flex flex-col h-full w-full p-3">
             {/* Current Weather Section */}
             <div className="text-white text-center mb-4">
-              <p className="text-lg font-medium opacity-90 mb-1">
+              <p className="text-xl font-medium opacity-90 mb-1">
                 {weather?.forecast?.[0]?.weekday}
               </p>
-              <p className="text-xs opacity-75 font-light mb-2">
+              <p className="text-base opacity-75 font-light mb-2">
                 {weather?.city}
               </p>
               <div className="mb-2">
-                <p className="text-5xl font-thin tracking-tight leading-none">
+                <p className="text-5xl font-extralight tracking-tight leading-none">
                   {weather?.temp}°
                 </p>
               </div>
-              <p className="text-sm capitalize opacity-90">{weather?.desc}</p>
+              <p className="text-lg capitalize opacity-90">{weather?.desc}</p>
             </div>
 
             {/* Weather Details - Horizontal Layout */}
             <div className="grid grid-cols-3 gap-2 mb-4 px-1">
               <div className="bg-white/5 rounded-lg p-2 border border-white/10 text-center">
                 <div className="text-white/70 text-xs mb-1">Umidade</div>
-                <div className="text-white font-medium text-sm">
+                <div className="text-white font-medium text-lg">
                   {weather?.humidity}%
                 </div>
               </div>
 
               <div className="bg-white/5 rounded-lg p-2 border border-white/10 text-center">
                 <div className="text-white/70 text-xs mb-1">Max/Min</div>
-                <div className="text-white font-medium text-xs">
+                <div className="text-white font-medium text-lg">
                   {weather?.forecast?.[0]?.max}°/{weather?.forecast?.[0]?.min}°
                 </div>
               </div>
 
               <div className="bg-white/5 rounded-lg p-2 border border-white/10 text-center">
                 <div className="text-white/70 text-xs mb-1">Chuva</div>
-                <div className="text-white font-medium text-sm">
+                <div className="text-white font-medium text-lg">
                   {weather?.rain}%
                 </div>
               </div>
             </div>
 
             {/* 7-Day Forecast - Compact */}
-            <div className="bg-white/5 rounded-lg border border-white/10 flex-1 min-h-0">
+            <div className="bg-white/5 rounded-lg border border-white/10 flex-1 ">
               <h3 className="text-white font-medium p-3 pb-2 text-center text-sm">
                 Próximos dias
               </h3>
