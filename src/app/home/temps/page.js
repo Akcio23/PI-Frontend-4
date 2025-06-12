@@ -75,13 +75,11 @@ const Temps = () => {
               <p className="text-xl font-medium opacity-90 mb-1">
                 {weather?.forecast?.[0]?.weekday}
               </p>
-              <p className="text-base opacity-75 font-light mb-2">
+              <p className="text-xl opacity-75 font-normal mb-2">
                 {weather?.city}
               </p>
               <div className="mb-2">
-                <p className="text-5xl font-extralight tracking-tight leading-none">
-                  {weather?.temp}°
-                </p>
+                <p className="text-5xl font-normal">{weather?.temp}°</p>
               </div>
               <p className="text-lg capitalize opacity-90">{weather?.desc}</p>
             </div>
