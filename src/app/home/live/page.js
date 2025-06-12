@@ -163,7 +163,7 @@ const Live = () => {
               Monitoramento em Tempo Real
             </h1>
             <div className="flex items-center justify-center space-x-1.5 sm:space-x-2 text-white/60">
-              <p className="text-[9px] sm:text-[10px]">
+              <p className="text-[9px] sm:text-[20px]">
                 Última atualização: {lastUpdate.toLocaleTimeString('pt-BR')}
               </p>
               <button

@@ -94,9 +94,10 @@ const Temps = () => {
               </div>
 
               <div className="bg-white/5 rounded-lg p-2 border border-white/10 text-center">
-                <div className="text-white/70 text-xs mb-1">Max/Min</div>
+                <div className="text-white/70 text-xs mb-1">Min / Max</div>
                 <div className="text-white font-medium text-lg">
-                  {weather?.forecast?.[0]?.max}°/{weather?.forecast?.[0]?.min}°
+                  {weather?.forecast?.[0]?.min}° - {weather?.forecast?.[0]?.max}
+                  °
                 </div>
               </div>
 
@@ -110,7 +111,7 @@ const Temps = () => {
 
             {/* 7-Day Forecast - Compact */}
             <div className="bg-white/5 rounded-lg border border-white/10 flex-1 ">
-              <h3 className="text-white font-medium p-3 pb-2 text-center text-sm">
+              <h3 className="text-white font-medium p-3 pb-2 text-center text-lg">
                 Próximos dias
               </h3>
 
@@ -120,12 +121,12 @@ const Temps = () => {
                     key={index}
                     className="flex items-center justify-between py-1.5 px-2 rounded hover:bg-white/5 transition-colors duration-200"
                   >
-                    <span className="text-white font-light text-xs w-12 truncate">
+                    <span className="text-white font-light text-base w-12 truncate">
                       {day.weekday}
                     </span>
 
                     <div className="flex items-center gap-2 flex-1 justify-end">
-                      <span className="text-white/60 text-xs min-w-[24px] text-right">
+                      <span className="text-white/60 text-base min-w-[24px] text-right">
                         {day.min}°
                       </span>
 
@@ -138,7 +139,7 @@ const Temps = () => {
                         ></div>
                       </div>
 
-                      <span className="text-white font-medium text-xs min-w-[24px] text-right">
+                      <span className="text-white font-medium text-base min-w-[24px] text-right">
                         {day.max}°
                       </span>
                     </div>
