@@ -65,6 +65,13 @@ export const ButtonHomeRedirect = () => {
 
 export const ButtonLoginSubmit = () => {
   const [loading, setLoading] = useState(false)
+
+  const loadingController = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+  }
   return (
     <div>
       {loading && <LoadingSpinner />}
@@ -72,7 +79,7 @@ export const ButtonLoginSubmit = () => {
         className="bg-blueLight text-white font-light rounded-md py-3 px-8 shadow-md shadow-black 
                   transition-transform duration-150 active:scale-95"
         type="submit"
-        onClick={() => setLoading(true)}
+        onClick={loadingController}
       >
         Login
       </button>
